@@ -1,4 +1,4 @@
-#Robbie McVey, Charlie Barns, Eli Weaver
+#Robbie McVey, Charlie Barnes, Eli Weaver
 
 #import random for generating scores of games
 import random
