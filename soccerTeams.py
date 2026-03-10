@@ -1,5 +1,5 @@
-# Charlie Barns, Eli Weaver, Robbie McVey
-# Description: A 
+# Eli Weaver
+# Description: A menu to allow the player to pick what they want to do.
 
 def showMenu() :
     while (True) :
