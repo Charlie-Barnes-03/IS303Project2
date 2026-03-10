@@ -29,6 +29,11 @@ def showMenu() :
     iHomeWins = 0
     iHomeLosses = 0
 
+    # Choose the first away team before the loop starts
+    print('\n Choose an Away Team\n')
+    sAwayTeam = chooseteam(sHomeTeam)
+    print(f'\nAway team: {sAwayTeam}\n')
+
     while (bPlay == True) :
         print(" 1 - Play the game")
         print(" 2 - Display final record")
@@ -36,7 +41,6 @@ def showMenu() :
 
         iChoice = int( input("Make a selection: "))
 
-        
         if iChoice == 1 :
             # A function that creates random numbers which represent the score of soccer games
             def scores() :
@@ -44,7 +48,6 @@ def showMenu() :
                 iHomeScore = random.randrange(0,4)
                 iAwayScore = random.randrange(0,4)
                 return iHomeScore, iAwayScore
-
 
             # generate scores for the game, make sure there is no tie
             iHomeScore, iAwayScore = scores()
@@ -58,6 +61,14 @@ def showMenu() :
             elif iHomeScore < iAwayScore :
                 iHomeLosses = iHomeLosses + 1
                 print(f"\t{sHomeTeam}'s score: {iHomeScore} - {sAwayTeam}'s score: {iAwayScore}\n")
+
+            # After each game, prompt to choose a new away team if any remain
+            if len(lstTeams) > 0:
+                print('\n Choose a new Away Team\n')
+                sAwayTeam = chooseteam(sHomeTeam)
+                print(f'\nAway team: {sAwayTeam}\n')
+            else:
+                print("No more away teams available!\n")
 
         if iChoice == 2 :
             print(f"{sHomeTeam} has a final record of {iHomeWins} wins and {iHomeLosses} losses.\n")
@@ -83,10 +94,6 @@ lstTeams = ["North Carolina Tar Heels",
 
 print('\n Choose a Home Team.\n')
 sHomeTeam = chooseteam()
-print('\n Choose an Away Team\n')
-sAwayTeam = chooseteam(sHomeTeam)
-
-print(f'\nHome team: {sHomeTeam}')
-print(f'Away team: {sAwayTeam}\n')
+print(f'Home team: {sHomeTeam}\n')
 
 showMenu()
